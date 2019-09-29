@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class Image {
 
-    File img1 = new File("C:\\Users\\DaStorm\\Desktop\\OM\\prog\\ColorGame\\src\\texture\\0.png");
-    File img2 = new File("C:\\Users\\DaStorm\\Desktop\\OM\\prog\\ColorGame\\src\\texture\\1.png");
-    File img3 = new File("C:\\Users\\DaStorm\\Desktop\\OM\\prog\\ColorGame\\src\\texture\\2.png");
-    File img4 = new File("C:\\Users\\DaStorm\\Desktop\\OM\\prog\\ColorGame\\src\\texture\\3.png");
+    File img1 = new File("src\\texture\\0.png");
+    File img2 = new File("src\\texture\\1.png");
+    File img3 = new File("src\\texture\\2.png");
+    File img4 = new File("src\\texture\\3.png");
 
     BufferedImage img01 = ImageIO.read(img1);
     BufferedImage img02 = ImageIO.read(img2);
