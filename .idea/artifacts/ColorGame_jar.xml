@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ColorGame:jar">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="ColorGame.jar">
+      <element id="module-output" name="ColorGame" />
+    </root>
+  </artifact>
+</component>
