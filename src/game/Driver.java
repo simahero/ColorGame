@@ -4,20 +4,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 
 public class Driver implements Runnable{
 
     JFrame frame;
     static Canvas canvas;
     static ColorManager colorManager = new ColorManager();
+    Image image = new Image();
     static boolean running = true;
+    static int count;
+    static JLabel label = new JLabel("");
 
-    public Driver(){
+
+    public Driver() throws IOException {
         frame = new JFrame("COLOR GAME");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        label.setLayout(null);
         frame.add(canvas = new Canvas());
         frame.addKeyListener(new Game());
-        frame.setSize(320,320);
+        //frame.add(label);
+        frame.setSize(640,400);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         new Thread(this).start();
@@ -35,6 +42,7 @@ public class Driver implements Runnable{
         Graphics g = bs.getDrawGraphics();
         g.setColor(colorManager.getColor());
         g.fillRect(0,0,320,320);
+        g.drawImage(image.images[colorManager.status], 320 , 0, null);
         g.dispose();
         bs.show();
     }
@@ -44,6 +52,8 @@ public class Driver implements Runnable{
             running = false;
         } else {
             colorManager.getRandom();
+            count += 100;
+            label.setText("Score:" + count);
         }
     }
 
@@ -51,7 +61,7 @@ public class Driver implements Runnable{
 
     @Override
     public void run() {
-        BasicTimer timer = new BasicTimer(60);
+        BasicTimer timer = new BasicTimer(120);
         while (running) {
             timer.sync();
             render();
@@ -65,7 +75,7 @@ public class Driver implements Runnable{
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new Driver();
     }
 
